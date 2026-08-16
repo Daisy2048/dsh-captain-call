@@ -1,0 +1,12 @@
+# 依赖（由 dsh plugin add / pnpm install 安装，不提交）
+node_modules/
+
+# 模型文件（175MB，用 scripts/download-models.ps1 恢复）
+models/
+
+# 杂项
+package-lock.json
+*.log
+.DS_Store
+tts_test.wav
+edge_test.mp3

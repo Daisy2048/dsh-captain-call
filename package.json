@@ -1,0 +1,47 @@
+{
+  "name": "@dsh-external/dsh-client-ui-captain-call",
+  "description": "队长来电（captain-call）：AgentTeams 队员完成任务时，桌面助手 GINKA 替 Daisy 队长接听来电，语音汇报'是谁、是否按要求准时完成'；语音交互前先征得队长同意再申请麦克风。",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/schemastery": "^3.18.1-rc.1",
+    "@deepseek-ai/dsh-llm": "^0.1.0-rc.6"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-llm": "0.1.0-rc.6"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.2.0",
+    "onnxruntime-node": "^1.27.0",
+    "msedge-tts": "^2.0.7"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "assets",
+    "models",
+    "README.md",
+    "NOTICE.md",
+    "LICENSE"
+  ],
+  "license": "MIT"
+}

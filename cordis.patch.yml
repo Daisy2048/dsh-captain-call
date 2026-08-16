@@ -1,0 +1,5 @@
+# captain-call skin bundle patch: inserts its public dsh.client entry into the
+# web plugin roster and mounts the host-side state/asset routes.
+- insert:
+    - id: ui-captain-call
+      name: '@dsh-external/dsh-client-ui-captain-call'
