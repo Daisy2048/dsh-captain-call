@@ -46,7 +46,7 @@ dsh-captain-call/
 
 - 客户端是纯 DOM + 原生 JS（无 React），所有 DOM/CSS/定时器/音频/麦克风流必须在 `ctx.effect` 销毁器中回收（可卸载即复原）；
 - 服务端只读 `.agent-teams/*/team.json`，禁止修改 AgentTeams 状态文件；
-- 麦克风每次申请前必须先弹授权确认框（队长要求）；
+- 麦克风权限：点「语音回复」直接 `getUserMedia`，不弹插件确认框（浏览器首次系统授权条是安全机制，无法绕过）；
 - 素材版权：`assets/` 与 `models/` 均不入发布包，详见 `NOTICE.md` 与 `上线可行性报告.md`。
 
 ## 待办（欢迎认领）
