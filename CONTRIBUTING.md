@@ -40,13 +40,18 @@ dsh-captain-call/
    curl.exe http://127.0.0.1:3080/plugins/dsh-captain-call/state            # 状态 + tts.engine
    curl.exe "http://127.0.0.1:3080/plugins/dsh-captain-call/tts?text=你好&speaker=zf_001" -o t.wav   # 语音合成
    ```
-4. 端到端验收：GINKA 面板「测试来电」→ 接听 → 语音回复/打字。
+4. 端到端验收：GINKA 面板「测试来电」→ 接听 → 语音回复/打字；
+5. **Kokoro 引擎自测**（无需重启服务，直接验证模型/依赖是否完好）：
+   ```powershell
+   node scripts/selftest-kokoro.mjs   # 输出 SELFTEST OK 即引擎正常
+   ```
 
 ## 约定
 
 - 客户端是纯 DOM + 原生 JS（无 React），所有 DOM/CSS/定时器/音频/麦克风流必须在 `ctx.effect` 销毁器中回收（可卸载即复原）；
 - 服务端只读 `.agent-teams/*/team.json`，禁止修改 AgentTeams 状态文件；
 - 麦克风权限：点「语音回复」直接 `getUserMedia`，不弹插件确认框（浏览器首次系统授权条是安全机制，无法绕过）；
+- **声线风格标注**：Kokoro 官方未公开"编号↔名称"对照表，试听确认后请把特征填入 `scripts/voice-traits.json`（格式 `"zf_001": "温柔女声"`），无需改代码；
 - 素材版权：`assets/` 与 `models/` 均不入发布包，详见 `NOTICE.md` 与 `上线可行性报告.md`。
 
 ## 待办（欢迎认领）
